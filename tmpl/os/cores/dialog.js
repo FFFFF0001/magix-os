@@ -144,8 +144,7 @@ var Dialog = Magix.View.extend({
     resize: function() {
         var me = this;
         if (me.state == DialogState.MAX) {
-            var parent = me.owner.parent();
-            var pNode = S.one('#' + parent.id);
+            var pNode = S.one('#icon');
             var node = S.one('#' + me.id + ' .dialog');
             var width = pNode.width();
             var height = pNode.height() - node.one('.title').height();
@@ -176,10 +175,10 @@ var Dialog = Magix.View.extend({
         var node = S.one('#' + me.id + ' .dialog');
         console.log(me.state);
         if (me.state == DialogState.NORMAL) {
-            var parent = me.owner.parent();
-            var pNode = S.one('#' + parent.id);
+            var pNode = S.one('#icon');
             var width = pNode.width();
             var height = pNode.height() - node.one('.title').height();
+            console.log(width, height);
             me.temp.nodeStyle = {
                 left: node.css('left'),
                 top: node.css('top'),

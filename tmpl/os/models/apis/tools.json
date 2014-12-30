@@ -1,0 +1,24 @@
+{
+    "info": {
+        "ok": true
+    },
+    "data": {
+        "list": [{
+            "name": "test1",
+            "id": "app1000",
+            "view": "os/plugins/clock/index",
+            "right": 10,
+            "top": 20,
+            "width": 130,
+            "height": 130
+        }, {
+            "name": "weather",
+            "id": "app1001",
+            "view": "os/plugins/weather/index",
+            "right": 10,
+            "bottom": 10,
+            "width": 280,
+            "height": 25
+        }]
+    }
+}

@@ -1,0 +1,107 @@
+html{
+    background:#5B6C86;
+}
+.taskbar{
+    height: 30px;
+    width:100%;
+    position: absolute;
+    background: #161D37;
+    opacity: 0.9;bottom:0;
+    line-height: 30px;
+    padding:0 8px;
+    z-index: 10000
+}
+.taskbar .item{
+    float:left;
+    width:28px;
+    margin:1px;
+    height:28px;
+}
+.taskbar .item:hover,.taskbar .item-active{
+    background: #FFFFCC;
+}
+.taskbar .item img{
+    width:20px;
+    height:20px;
+    margin:4px;
+}
+.icon{
+    user-select:none;
+    -moz-user-select:none;
+}
+.icon .item{
+    margin:2px;
+    width:80px;
+    height: 90px;
+    text-align: center;
+    padding-top: 10px;
+    position: absolute;
+}
+.icon .item:hover{
+    background: #99CCCC;
+}
+.icon .item .title{
+    color: #fff;
+    margin-top:6px;
+    cursor:default;
+}
+.icon .item img{
+    width:58px;
+    height:58px;
+}
+
+.dialog{
+    background: #fff;
+    position: absolute;
+}
+.dialog .title{
+    background: #7B8A85;
+    height:25px;
+    padding:0 5px;
+    line-height: 25px;
+    cursor: move;
+    color:#fff;
+}
+.dialog .title-active{
+    background: #161D37;
+    color: #fff;
+}
+.dialog .resizer{
+    width:0;
+    height:0;
+    position: absolute;
+    bottom:-25px;
+    right:0;
+    cursor:nw-resize;
+    border-bottom: 10px solid #161D37;
+    border-left: 10px solid transparent;
+}
+.dialog .controls{
+    position: absolute;
+    top:0;
+    right:5px;
+    color: #fff;
+}
+.dialog .control{
+    float:right;
+    cursor:default;
+    width:20px;
+    height:20px;
+    text-align: center;
+    line-height: 20px;
+    margin-top:3px;
+}
+.dialog .control:hover{
+    background: #E2E4E3;
+}
+.dialog .body{
+    overflow: auto;
+    height: 100%;
+    background: #fff;
+}
+.dialog .mask{
+    top:25px;
+}
+.dialog-anim{
+    background: #161D37;
+}

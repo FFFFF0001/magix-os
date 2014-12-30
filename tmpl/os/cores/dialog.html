@@ -1,0 +1,21 @@
+<div style="width:{{extra.width}}px;height:{{extra.height}}px;left:{{extra.left}}px;top:{{extra.top}}px" class="dialog" mx-mousedown="active()">
+    <div class="title" id="title_{{id}}">
+        {{extra.name}}
+    </div>
+    <div class="controls">
+        {{#if extra.close}}
+        <span class="control" mx-click="close()">X</span>
+        {{/if}}
+        {{#if extra.max}}
+        <span class="control" mx-click="toggle()">二</span>
+        {{/if}}
+        {{#if extra.min}}
+        <span class="control" mx-click="hide()">—</span>
+        {{/if}}
+    </div>
+    <div class="body" id="body_{{id}}" mx-vframe="true" mx-view="{{extra.view}}"></div>
+    {{#if extra.resize}}
+    <div class="resizer" id="resizer_{{id}}"></div>
+    {{/if}}
+    <div class="mask" id="mask_{{id}}" style="display:none"></div>
+</div>

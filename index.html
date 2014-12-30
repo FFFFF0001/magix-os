@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Magix OS</title>
+        <link rel="stylesheet" type="text/css" href="src/os/themes/global.css" />
+        <script src="http://g.tbcdn.cn/kissy/k/1.4.5/seed.js"></script>
+        <script src="magix.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+        KISSY.use('magix',function(S,M){
+            S.config({
+                packages:[{
+                    name: 'os',
+                    tag: '20141229',
+                    path:'./src'
+                }]
+            });
+            M.boot({
+                ini:'os/ini',
+                skin:'black'
+            });
+        });
+        </script>
+    </body>
+</html>

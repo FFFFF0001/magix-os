@@ -1,0 +1,42 @@
+{
+    "info": {
+        "ok": true
+    },
+    "data": {
+        "list": [{
+            "name": "test1",
+            "id": "app1",
+            "view": "os/plugins/test/index"
+        }, {
+            "name": "来往",
+            "id": "app4",
+            "view": "os/plugins/laiwang/index",
+            "left": 100,
+            "top": 60,
+            "width": 1000,
+            "height": 500
+        }, {
+            "name": "有道词典",
+            "id": "app3",
+            "view": "os/plugins/youdao/index",
+            "max": false,
+            "width": 540,
+            "height": 515,
+            "resize": false
+        }, {
+            "name": "百度地图",
+            "id": "app2",
+            "view": "os/plugins/bmap/index",
+            "left": 150,
+            "top": 20,
+            "width": 1000,
+            "height": 500
+        }, {
+            "name": "人生日历",
+            "id": "app5",
+            "view": "os/plugins/cal/index",
+            "width": 1100,
+            "height": 500
+        }]
+    }
+}

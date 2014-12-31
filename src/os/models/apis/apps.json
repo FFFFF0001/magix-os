@@ -37,6 +37,14 @@
             "view": "os/plugins/cal/index",
             "width": 1100,
             "height": 500
+        }, {
+            "name": "快递查询",
+            "id": "app6",
+            "view": "os/plugins/kuaidi/index",
+            "max": false,
+            "width": 540,
+            "height": 420,
+            "resize": false
         }]
     }
 }

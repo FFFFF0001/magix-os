@@ -1,7 +1,7 @@
 KISSY.add("os/cores/taskbar",function(S,Magix ,XTmpl ){
 
 return Magix.View.extend({
-    tmpl:"{{#each list}}\r\n<div class=\"item\" title=\"{{name}}\" id=\"taskbar_{{id}}\" mx-click=\"active({id:'{{id}}'})\">\r\n    <img src=\"{{icon view}}\" />\r\n</div>\r\n{{/each}}",
+    tmpl:"<div class=\"start\"></div>\r\n{{#each list}}\r\n<div class=\"item\" title=\"{{name}}\" id=\"taskbar_{{id}}\" mx-click=\"active({id:'{{id}}'})\">\r\n    <img src=\"{{icon view}}\" />\r\n</div>\r\n{{/each}}\r\n<div class=\"notify\"></div>",
     ctor: function() {
         var me = this;
         me.items = [];

@@ -6,11 +6,11 @@ var DialogState = {
     MIN: 'min',
     NORMAL: 'normal'
 };
-var VOM = Magix.VOM;
+var Vframe = Magix.Vframe;
 var Position = 0;
 var Dialogs = [];
 var Dialog = Magix.View.extend({
-    tmpl: '@dialog',
+    tmpl: '@dialog.html',
     ctor: function(extra) {
         var me = this;
         me.extra = Magix.mix({
@@ -41,6 +41,7 @@ var Dialog = Magix.View.extend({
             bufferTime: 0,
             clickPixelThresh: 0
         }));
+        me.$move = d;
         var offset, disx, disy;
         d.on('dragstart', function(e) {
             offset = e.target.get('node').offset();
@@ -194,10 +195,10 @@ var Dialog = Magix.View.extend({
             me.state = DialogState.MAX;
             node = S.one('#resizer_' + me.id);
             node.hide();
-            me.capture('dialog-move').set('disabled', true);
+            me.$move.set('disabled', true);
         } else {
             me.state = DialogState.NORMAL;
-            me.capture('dialog-move').set('disabled', false);
+            me.$move.set('disabled', false);
             node.css(me.temp.nodeStyle);
             node = S.one('#resizer_' + me.id);
             node.show();
@@ -260,23 +261,23 @@ var Dialog = Magix.View.extend({
     active: function(id, ignore) {
         var vf;
         if (id == Dialog.lId) {
-            vf = VOM.get(id);
+            vf = Vframe.get(id);
             if (!ignore && vf) {
-                vf.invokeView('hideUI');
+                vf.invoke('hideUI');
             }
             return;
         }
         if (Dialog.lId) {
-            vf = VOM.get(Dialog.lId);
+            vf = Vframe.get(Dialog.lId);
             if (vf) {
-                vf.invokeView('deactiveUI');
+                vf.invoke('deactiveUI');
             }
         }
         id = Dialog.adjust(id);
         if (id) {
-            vf = VOM.get(id);
+            vf = Vframe.get(id);
             if (vf) {
-                vf.invokeView('activeUI');
+                vf.invoke('activeUI');
             }
             Dialog.lId = id;
             for (var i = Dialogs.length - 1; i >= 0; i--) {

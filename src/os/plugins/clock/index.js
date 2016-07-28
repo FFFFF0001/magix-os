@@ -1,8 +1,7 @@
-KISSY.add("os/plugins/clock/index",function(S,Magix ){
-var Module = this;
+KISSY.add('os/plugins/clock/index',function(S,Magix ){
+Magix.applyStyle('mp-bbf',".clock-box{width:130px;height:130px;background:url(src/os/plugins/clock/images/trad.png) no-repeat;position:relative}.clock-box div{width:13px;height:129px;position:absolute;top:0;left:58px}.clock-box .dot{background:url(src/os/plugins/clock/images/trad_dot.png) no-repeat}.clock-box .h{background:url(src/os/plugins/clock/images/trad_h.png) no-repeat}.clock-box .m{background:url(src/os/plugins/clock/images/trad_m.png) no-repeat}.clock-box .s{background:url(src/os/plugins/clock/images/trad_s.png) no-repeat}.clock-box .animate{-webkit-transition:-webkit-transform 1s ease;transition:transform 1s ease}");
 return Magix.View.extend({
-    tmpl:"<div class=\"clock-box\">\r\n    <div class=\"dot\"></div>\r\n    <div class=\"h animate\"></div>\r\n    <div class=\"m animate\"></div>\r\n    <div class=\"s animate\"></div>\r\n</div>",
-    css: Magix.modulePath(Module, ".clock-box{width:130px;height:130px;background:url(@/images/trad.png) no-repeat;position:relative}\r\n.clock-box div{width:13px;height:129px;position:absolute;top:0px;left:58px}\r\n.clock-box .dot{background:url(@/images/trad_dot.png) no-repeat}\r\n.clock-box .h{background:url(@/images/trad_h.png) no-repeat}\r\n.clock-box .m{background:url(@/images/trad_m.png) no-repeat}\r\n.clock-box .s{background:url(@/images/trad_s.png) no-repeat}\r\n.clock-box .animate{\r\n    -webkit-transition:-webkit-transform 1s ease;\r\n    -moz-transition:-moz-transform 1s ease;\r\n    -o-transition:-o-transform 1s ease;\r\n    transition:transform 1s ease\r\n}"),
+    tmpl: "<div class=\"clock-box\"><div class=\"dot\"></div><div class=\"h animate\"></div><div class=\"m animate\"></div><div class=\"s animate\"></div></div>",
     render: function() {
         var me = this;
         me.setHTML(me.id, me.tmpl);
@@ -32,4 +31,4 @@ return Magix.View.extend({
         }, 1000);
         setInterval(clockmove, 1000);
     }
-});},{requires:['magix']});
+});},{requires:['magix']})

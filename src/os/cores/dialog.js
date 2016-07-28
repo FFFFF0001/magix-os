@@ -1,4 +1,4 @@
-KISSY.add("os/cores/dialog",function(S,Magix ,DD ,XTmpl ){
+KISSY.add('os/cores/dialog',function(S,Magix ,DD ,XTmpl ){
 
 
 var DialogState = {
@@ -6,11 +6,11 @@ var DialogState = {
     MIN: 'min',
     NORMAL: 'normal'
 };
-var VOM = Magix.VOM;
+var Vframe = Magix.Vframe;
 var Position = 0;
 var Dialogs = [];
 var Dialog = Magix.View.extend({
-    tmpl:"<div style=\"width:{{extra.width}}px;height:{{extra.height}}px;left:{{extra.left}}px;top:{{extra.top}}px\" class=\"dialog\" mx-mousedown=\"active()\">\r\n    <div class=\"title\" id=\"title_{{id}}\">\r\n        <span>{{extra.name}}</span>\r\n    </div>\r\n    <div class=\"controls\">\r\n        {{#if extra.close}}\r\n        <span class=\"control\" mx-click=\"close()\">X</span>\r\n        {{/if}}\r\n        {{#if extra.max}}\r\n        <span class=\"control\" mx-click=\"toggle()\">二</span>\r\n        {{/if}}\r\n        {{#if extra.min}}\r\n        <span class=\"control\" mx-click=\"hide()\">—</span>\r\n        {{/if}}\r\n    </div>\r\n    <div class=\"body\" id=\"body_{{id}}\" mx-vframe=\"true\" mx-view=\"{{extra.view}}\"></div>\r\n    {{#if extra.resize}}\r\n    <div class=\"resizer\" id=\"resizer_{{id}}\"></div>\r\n    {{/if}}\r\n    <div class=\"mask\" id=\"mask_{{id}}\" style=\"display:none\"></div>\r\n</div>",
+    tmpl: "<div style=\"width:{{extra.width}}px;height:{{extra.height}}px;left:{{extra.left}}px;top:{{extra.top}}px\" class=\"dialog\" mx-mousedown=\"active()\"><div class=\"title\" id=\"title_{{id}}\"><span>{{extra.name}}</span></div><div class=\"controls\">{{#if extra.close}}<span class=\"control\" mx-click=\"close()\">X</span>{{/if}} {{#if extra.max}}<span class=\"control\" mx-click=\"toggle()\">二</span>{{/if}} {{#if extra.min}}<span class=\"control\" mx-click=\"hide()\">—</span>{{/if}}</div><div class=\"body\" id=\"body_{{id}}\" mx-vframe=\"true\" mx-view=\"{{extra.view}}\"></div>{{#if extra.resize}}<div class=\"resizer\" id=\"resizer_{{id}}\"></div>{{/if}}<div class=\"mask\" id=\"mask_{{id}}\" style=\"display:none\"></div></div>",
     ctor: function(extra) {
         var me = this;
         me.extra = Magix.mix({
@@ -41,6 +41,7 @@ var Dialog = Magix.View.extend({
             bufferTime: 0,
             clickPixelThresh: 0
         }));
+        me.$move = d;
         var offset, disx, disy;
         d.on('dragstart', function(e) {
             offset = e.target.get('node').offset();
@@ -194,10 +195,10 @@ var Dialog = Magix.View.extend({
             me.state = DialogState.MAX;
             node = S.one('#resizer_' + me.id);
             node.hide();
-            me.capture('dialog-move').set('disabled', true);
+            me.$move.set('disabled', true);
         } else {
             me.state = DialogState.NORMAL;
-            me.capture('dialog-move').set('disabled', false);
+            me.$move.set('disabled', false);
             node.css(me.temp.nodeStyle);
             node = S.one('#resizer_' + me.id);
             node.show();
@@ -260,23 +261,23 @@ var Dialog = Magix.View.extend({
     active: function(id, ignore) {
         var vf;
         if (id == Dialog.lId) {
-            vf = VOM.get(id);
+            vf = Vframe.get(id);
             if (!ignore && vf) {
-                vf.invokeView('hideUI');
+                vf.invoke('hideUI');
             }
             return;
         }
         if (Dialog.lId) {
-            vf = VOM.get(Dialog.lId);
+            vf = Vframe.get(Dialog.lId);
             if (vf) {
-                vf.invokeView('deactiveUI');
+                vf.invoke('deactiveUI');
             }
         }
         id = Dialog.adjust(id);
         if (id) {
-            vf = VOM.get(id);
+            vf = Vframe.get(id);
             if (vf) {
-                vf.invokeView('activeUI');
+                vf.invoke('activeUI');
             }
             Dialog.lId = id;
             for (var i = Dialogs.length - 1; i >= 0; i--) {
@@ -308,4 +309,4 @@ Magix.View.merge({
         }
     }
 });
-return Dialog;},{requires:['magix','dd','xtemplate']});
+return Dialog;},{requires:['magix','dd','xtemplate']})

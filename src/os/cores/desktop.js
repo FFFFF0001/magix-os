@@ -1,11 +1,26 @@
-KISSY.add("os/cores/desktop",function(S,Magix ){/*
+KISSY.add('os/cores/desktop',function(S,Magix ){/*
     author:xinglie.lkf@taobao.com
  */
 
-var VOM = Magix.VOM;
+var Vframe = Magix.Vframe;
 
 return Magix.View.extend({
-    tmpl:"<div mx-vframe=\"true\" mx-view=\"os/cores/tool\" class=\"tool\" id=\"tool\"></div>\r\n<div mx-vframe=\"true\" mx-view=\"os/cores/icon\" class=\"icon\" id=\"icon\"></div>\r\n<div mx-vframe=\"true\" mx-view=\"os/cores/taskbar\" class=\"taskbar\" id=\"taskbar\"></div>",
+    tmpl: "<div mx-view=\"os/cores/tool\" class=\"tool\" id=\"tool\"></div><div mx-view=\"os/cores/icon\" class=\"icon\" id=\"icon\"></div><div mx-view=\"os/cores/taskbar\" class=\"taskbar\" id=\"taskbar\"></div>",
+    init: function() {
+        var me = this;
+        var $win = S.one(window);
+        var resize = function() {
+            me.resize();
+            var vf = Vframe.get('icon');
+            if (vf) {
+                vf.invoke('resize');
+            }
+        };
+        $win.on('resize', resize);
+        me.on('destroy', function() {
+            $win.off('resize', resize);
+        });
+    },
     render: function() {
         var me = this;
         me.setHTML(me.id, me.tmpl);
@@ -19,12 +34,5 @@ return Magix.View.extend({
         var h = vheight - taskbar.height();
         icon.height(h);
         tool.height(h);
-    },
-    '$win<resize>': function() {
-        this.resize();
-        var vf = VOM.get('icon');
-        if (vf) {
-            vf.invokeView('resize');
-        }
     }
-});},{requires:['magix']});
+});},{requires:['magix']})

@@ -1,14 +1,15 @@
-KISSY.add("os/cores/icon",function(S,Magix ,XTmpl ){
+KISSY.add('os/cores/icon',function(S,Magix ,XTmpl ){
 
 return Magix.View.extend({
-    tmpl:"{{#each list}}\r\n<div class=\"item\" mx-click=\"open({id:'{{id}}'})\">\r\n    <ul>\r\n        <li>\r\n            <img src=\"{{icon view}}\" />\r\n        </li>\r\n        <li class=\"title\">\r\n            {{name}}\r\n        </li>\r\n    </ul>\r\n</div>\r\n{{/each}}",
+    tmpl: "{{#each list}}<div class=\"item\" mx-click=\"open({id:'{{id}}'})\"><ul><li><img src=\"{{icon view}}\"/></li><li class=\"title\">{{name}}</li></ul></div>{{/each}}",
     render: function() {
         var me = this;
         me.request().all({
             name: 'Apps'
         }, function(e, m) {
+            console.log(m);
             var html = new XTmpl(me.tmpl).render({
-                list: m.get('list', [])
+                list: m.get('data.list', [])
             });
             console.log(m);
             me.map = m.get('map');
@@ -43,4 +44,4 @@ return Magix.View.extend({
         var me = this;
         me.dialog(me.map[e.params.id]);
     }
-});},{requires:['magix','xtemplate']});
+});},{requires:['magix','xtemplate']})

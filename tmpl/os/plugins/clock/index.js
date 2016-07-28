@@ -1,8 +1,7 @@
 var Magix = require('magix');
-var Module = this;
+Magix.applyStyle('global@index.css');
 module.exports = Magix.View.extend({
-    tmpl: '@index',
-    css: Magix.modulePath(Module, '@index'),
+    tmpl: '@index.html',
     render: function() {
         var me = this;
         me.setHTML(me.id, me.tmpl);

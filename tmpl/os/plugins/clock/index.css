@@ -1,9 +1,9 @@
-.clock-box{width:130px;height:130px;background:url(@/images/trad.png) no-repeat;position:relative}
+.clock-box{width:130px;height:130px;background:url(src/os/plugins/clock/images/trad.png) no-repeat;position:relative}
 .clock-box div{width:13px;height:129px;position:absolute;top:0px;left:58px}
-.clock-box .dot{background:url(@/images/trad_dot.png) no-repeat}
-.clock-box .h{background:url(@/images/trad_h.png) no-repeat}
-.clock-box .m{background:url(@/images/trad_m.png) no-repeat}
-.clock-box .s{background:url(@/images/trad_s.png) no-repeat}
+.clock-box .dot{background:url(src/os/plugins/clock/images/trad_dot.png) no-repeat}
+.clock-box .h{background:url(src/os/plugins/clock/images/trad_h.png) no-repeat}
+.clock-box .m{background:url(src/os/plugins/clock/images/trad_m.png) no-repeat}
+.clock-box .s{background:url(src/os/plugins/clock/images/trad_s.png) no-repeat}
 .clock-box .animate{
     -webkit-transition:-webkit-transform 1s ease;
     -moz-transition:-moz-transform 1s ease;

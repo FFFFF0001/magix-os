@@ -1,6 +1,6 @@
-KISSY.add("os/plugins/test/index",function(S,Magix ){
+KISSY.add('os/plugins/test/index',function(S,Magix ){
 return Magix.View.extend({
-    tmpl:"<div>\r\nadf<button mx-click=\"test()\">test</button>\r\n</div>",
+    tmpl: "<div>adf<button mx-click=\"test()\">test</button></div>",
     render: function() {
         this.setHTML(this.id, this.tmpl);
     },
@@ -11,4 +11,4 @@ return Magix.View.extend({
             view: 'os/plugins/test/index'
         });
     }
-});},{requires:['magix']});
+});},{requires:['magix']})

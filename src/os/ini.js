@@ -1,12 +1,11 @@
-KISSY.add("os/ini",function(S,Magix ,XTmpl ){/*
+KISSY.add('os/ini',function(S,Magix ,XTmpl ){/*
     author:xinglie.lkf@taobao.com
  */
 
 
-var VOM = Magix.VOM;
-var Exchange = Magix.local;
+var Vframe = Magix.Vframe;
+var Exchange = new Magix.Base();
 var View = Magix.View;
-var VOM = Magix.VOM;
 Magix.modulePath = function(module, str) {
     var info = module.packageInfo;
     var base = info.base;
@@ -33,9 +32,9 @@ Exchange.on('taskbar-active', function(e) {
     d.active(e.id);
 });
 var InvokeTaskbarView = function(method, params) {
-    var vf = VOM.get('taskbar');
+    var vf = Vframe.get('taskbar');
     if (vf) {
-        vf.invokeView(method, params);
+        vf.invoke(method, params);
     }
 };
 Exchange.on('dialog-add', function(e) {
@@ -87,7 +86,7 @@ return {
     defaultView: 'os/cores/desktop',
     exts: [
         'os/themes/' + Magix.config('skin') + '/index.css',
-        'os/models/manager',
+        'os/services/service',
         'os/cores/dialog'
     ]
-};},{requires:['magix','xtemplate']});
+};},{requires:['magix','xtemplate']})

@@ -1,7 +1,7 @@
-KISSY.add("os/cores/taskbar",function(S,Magix ,XTmpl ){
+KISSY.add('os/cores/taskbar',function(S,Magix ,XTmpl ){
 
 return Magix.View.extend({
-    tmpl:"<div class=\"start\"></div>\r\n{{#each list}}\r\n<div class=\"item\" title=\"{{name}}\" id=\"taskbar_{{id}}\" mx-click=\"active({id:'{{id}}'})\">\r\n    <img src=\"{{icon view}}\" />\r\n</div>\r\n{{/each}}\r\n<div class=\"notify\"></div>",
+    tmpl: "<div class=\"start\"></div>{{#each list}}<div class=\"item\" title=\"{{name}}\" id=\"taskbar_{{id}}\" mx-click=\"active({id:'{{id}}'})\"><img src=\"{{icon view}}\"/></div>{{/each}}<div class=\"notify\"></div>",
     ctor: function() {
         var me = this;
         me.items = [];
@@ -42,4 +42,4 @@ return Magix.View.extend({
         var me = this;
         me.exchange().fire('taskbar-active', me.items[e.params.id]);
     }
-});},{requires:['magix','xtemplate']});
+});},{requires:['magix','xtemplate']})

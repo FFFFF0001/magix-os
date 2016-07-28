@@ -1,7 +1,7 @@
 var Magix = require('magix');
 var XTmpl = require('xtemplate');
 module.exports = Magix.View.extend({
-    tmpl: '@taskbar',
+    tmpl: '@taskbar.html',
     ctor: function() {
         var me = this;
         me.items = [];

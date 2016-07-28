@@ -1,14 +1,15 @@
 var Magix = require('magix');
 var XTmpl = require('xtemplate');
 module.exports = Magix.View.extend({
-    tmpl: '@icon',
+    tmpl: '@icon.html',
     render: function() {
         var me = this;
         me.request().all({
             name: 'Apps'
         }, function(e, m) {
+            console.log(m);
             var html = new XTmpl(me.tmpl).render({
-                list: m.get('list', [])
+                list: m.get('data.list', [])
             });
             console.log(m);
             me.map = m.get('map');

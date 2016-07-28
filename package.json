@@ -1,7 +1,14 @@
 {
-    "name": "temp",
-    "version": "0.2.0",
-    "devDependencies": {
-        "grunt-contrib-watch": ""
-    }
+  "name": "magix-os",
+  "description": "magix os",
+  "version": "1.0.0",
+  "author": "xinglie <xinglie.lkf@taobao.com>",
+  "dependencies": {
+    "gulp": "",
+    "gulp-watch": "",
+    "gulp-uglify": "",
+    "gulp-cssnano": "",
+    "magix-combine": "",
+    "del": ""
+  }
 }

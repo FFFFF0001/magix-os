@@ -2,10 +2,25 @@
     author:xinglie.lkf@taobao.com
  */
 var Magix = require('magix');
-var VOM = Magix.VOM;
+var Vframe = Magix.Vframe;
 
 module.exports = Magix.View.extend({
-    tmpl: '@desktop',
+    tmpl: '@desktop.html',
+    init: function() {
+        var me = this;
+        var $win = S.one(window);
+        var resize = function() {
+            me.resize();
+            var vf = Vframe.get('icon');
+            if (vf) {
+                vf.invoke('resize');
+            }
+        };
+        $win.on('resize', resize);
+        me.on('destroy', function() {
+            $win.off('resize', resize);
+        });
+    },
     render: function() {
         var me = this;
         me.setHTML(me.id, me.tmpl);
@@ -19,12 +34,5 @@ module.exports = Magix.View.extend({
         var h = vheight - taskbar.height();
         icon.height(h);
         tool.height(h);
-    },
-    '$win<resize>': function() {
-        this.resize();
-        var vf = VOM.get('icon');
-        if (vf) {
-            vf.invokeView('resize');
-        }
     }
 });
